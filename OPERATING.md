@@ -113,6 +113,9 @@ keep existing ones):
     }
   ],
   "watermarks": { "gmail": null, "calendar": null },
+  "dinner_history": [
+    {"date": "2026-08-30", "ideas": ["Mapo tofu", "Oyakodon", "Chicken shawarma bowls"]}
+  ],
   "current_brief": { "thread_id": null, "message_id": null, "sent_at": null, "type": null },
   "runs": [
     {"at": "2026-08-29T11:00:00Z", "type": "morning", "status": "ok", "note": ""}
@@ -168,9 +171,10 @@ replies to last night's PM brief) gets done here.
 2. Read calendar (today + 3 days).
 3. Update `action_items` — add inferred items (permissive, `confirmed: false`),
    dedup against existing, update `last_nagged`.
-4. Compose the brief (§6) and **send it as a new self-addressed email**. Subject:
+4. Pick three dinner ideas (§9). Morning brief only.
+5. Compose the brief (§6) and **send it as a new self-addressed email**. Subject:
    `Daily briefing — <Wkd Mon DD> (AM)`.
-5. Set `current_brief` to the new thread/message, `type: "morning"`.
+6. Set `current_brief` to the new thread/message, `type: "morning"`.
 
 ### `evening`
 
@@ -252,12 +256,18 @@ as of 9:12am
 ## Open items
 - <every open action item, grouped by project if set>
 
+## Dinner      [morning only; see §9]
+- <dish> — <protein>, ~<time>, <prereqs to buy>
+- <dish> — ...
+- <dish> — ...
+
 ## FYI
 - <lower-priority mail worth knowing about>
 ```
 
 Evening brief swaps `## Plan` for `## Since this morning` + `## Done vs. not`
-first, then the same sections. Keep it tight — if a section is empty, omit it.
+first, then the same sections, and drops `## Dinner`. Keep it tight — if a
+section is empty, omit it.
 
 At the end of every brief, include a one-line pointer:
 `reply to this email to close items, correct me, or delegate.`
@@ -308,3 +318,32 @@ confirmation, and actual sending to a third party is never done by you at all.
 When Tony corrects you in a way that generalizes (draft tone for a person, a
 brief-format preference, who matters), append it to the "Learned" section of
 `context.md` and commit. Keep entries short.
+
+---
+
+## 9. Dinner suggestions
+
+Part of the **morning** brief only. Three ideas for what to cook that night.
+Ideas, not recipes — a dish name plus a short phrase. No ingredient lists, no
+steps. Keep each line under ~15 words. Read Tony's constraints from the
+"Food & dinner preferences" section of `context.md`; the standing ones as of
+this writing:
+
+- **Cooking for two.**
+- **30–45 min, weeknight-doable.** Tony picks the labor-intensive meals himself.
+- **Every idea has a heavy protein component** — ideally meat plus vegetables,
+  as one dish or with a vegetable side. Name the protein in the line.
+- **Lean toward the ranked cuisines** in `context.md` (Chinese, Japanese,
+  Mediterranean, Levantine, Korean, Mexican) — a lean, not a quota. Variety
+  across the week matters more than hitting the ranking every day.
+- **Prerequisites:** call out the non-staple ingredients each idea needs to buy
+  (e.g. "needs pork, eggplant"). Assume pantry staples are always on hand —
+  garlic, onions, common seasonings and spices, oil, soy, vinegar, lemon, rice,
+  eggs, flour, butter. Don't narrow ideas by guessing what's in the fridge.
+- **No repeats:** don't suggest a dish that's in `dinner_history` from the last
+  14 days.
+- **Skip the section** if the calendar shows Tony out for dinner or traveling
+  that night. Say nothing — don't note the omission.
+
+After sending the brief, append `{"date": "<today>", "ideas": ["<name>", ...]}`
+to `dinner_history` and trim it to the last 14 entries.

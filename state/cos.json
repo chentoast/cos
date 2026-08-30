@@ -45,6 +45,7 @@
   ],
   "chains": [],
   "watermarks": { "gmail": "2026-08-30T01:00:56Z", "calendar": "2026-08-30T01:00:56Z" },
+  "dinner_history": [],
   "current_brief": { "thread_id": "1a050311c5c58506", "message_id": "1a050311c5c58506", "sent_at": "2026-08-30T01:01:00Z", "type": "evening" },
   "runs": [
     {"at": "2026-08-30T00:42:00Z", "type": "morning", "status": "ok", "note": "first run; slice 1 (no inferred action items, no chains, no reply processing); 7-day gmail lookback; sent brief thread 1a0501fbbd627436"},

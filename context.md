@@ -37,6 +37,24 @@ action items to these; it does not invent projects.
 
 ---
 
+## Food & dinner preferences
+
+Feeds the morning brief's `## Dinner` suggestions (OPERATING.md §9). Tony
+maintains this.
+
+- Cooking for two.
+- Weeknight target: 30–45 min. More involved meals Tony picks himself.
+- Every dinner idea needs a heavy protein component — ideally meat plus
+  vegetables, as one dish or with a vegetable side.
+- Preferred cuisines, ranked: Chinese, Japanese, Mediterranean, Levantine,
+  Korean, Mexican. A lean, not a quota.
+- Assume pantry staples are always available: garlic, onions, common seasonings
+  and spices, oil, soy, vinegar, lemon, rice, eggs, flour, butter. Call out
+  other prerequisites to buy.
+- No dietary restrictions or allergies on file.
+
+---
+
 ## Learned
 
 Agent-appended. Short entries, dated. Corrections that generalize.
