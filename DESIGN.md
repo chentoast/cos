@@ -411,15 +411,26 @@ cos/
 
 ## 12. Spikes & open questions
 
-**Spike 0 — routine capabilities (do this before building anything).** Create one
-throwaway routine (or one-time run) and confirm the cloud session can:
-(a) read recent Gmail, (b) read Google Calendar, (c) **send** an email to
-`tchen1998@gmail.com` without interactive confirmation, (d) clone the private
-`cos` repo, and (e) **commit and push** back to it (directly to the default
-branch — not via PR). Any failure changes the architecture:
-- no send → agent writes a Gmail *draft* of the brief instead (lose push notifs);
-- no direct push → state persistence needs rethinking (PR-per-run is unworkable);
-- no connector access from routines → fall back to local launchd (§0 alt).
+**Spike 0 — routine capabilities. PASSED 2026-08-30.** A one-time routine against
+`https://github.com/chentoast/cos` confirmed the cloud session can:
+- ✅ read recent Gmail (`mcp__Gmail__*` auto-attached from the account connector)
+- ✅ read Google Calendar (`mcp__Google_Calendar__*`)
+- ✅ **send** an email with no interactive confirmation (lands in Sent + Inbox)
+- ✅ clone the private repo (GitHub App must be installed on it — was the initial
+  blocker; fixed by installing "Claude" on `chentoast/cos`)
+- ✅ commit and **push directly to `main`** — but the sandbox starts in **detached
+  HEAD**, so the run must `git checkout -B main origin/main` first and
+  `git push origin main` (not `git push origin HEAD`). Folded into `OPERATING.md`
+  §0.
+
+Findings carried forward:
+- **Send identity:** `send_message` has no `from` param — mail goes out as the
+  Gmail account's default "send mail as", which for this account is the alias
+  `thc@mit.edu`, not `tchen1998@gmail.com`. Either Tony sets the Gmail default
+  back to `tchen1998@gmail.com`, or the §7 carve-out is read as "any address Tony
+  controls". Does not affect reply detection (keyed off message-id, see below).
+- Routine sessions also expose `mcp__github__*` and `CronCreate/List/Delete` —
+  unused in v0.
 
 Still open after Spike 0:
 
@@ -431,9 +442,10 @@ Still open after Spike 0:
    inline excerpts. Sketched in the first implementation slice.
 4. **Reconciliation / dedup logic** for action items across runs (how the agent
    recognises "same item seen again" vs. new).
-5. **Self-send reply detection** — distinguishing the agent's own brief message
-   from Tony's replies in the same thread (both `from` Tony) via
-   message-id / In-Reply-To headers.
+5. **Self-send reply detection** — *approach settled:* the run records the exact
+   `message_id` of the brief it sent in `current_brief`. Any other message in
+   that thread is a reply from Tony, regardless of From address. Still needs a
+   real test in Slice 2.
 6. **`context.md` seeding** — Tony to write the priority-signals note and the
    draft style guide.
 

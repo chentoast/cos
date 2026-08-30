@@ -7,9 +7,26 @@ is given in your prompt.
 
 ---
 
+## Current rollout stage: SLICE 1 (morning brief only)
+
+Only the `morning` run is live. Until this line changes:
+
+- **Do not create inferred action items.** Track only items Tony has stated
+  explicitly — in `todos.md` or a direct ask in an email addressed to him.
+  Mention noteworthy things in the brief's `## FYI` section instead of tracking
+  them.
+- **Do not do chain logic.** `chains` stays `[]`.
+- **No reply processing** (that's Slice 2). If you see replies on the brief
+  thread, just note "I see your replies — reply handling goes live next slice."
+- Still do: Gmail + calendar read, the prioritized plan, the brief email, state
+  write + commit, run log.
+
+---
+
 ## 0. Every run, in order
 
-1. `git pull --rebase` so you have the latest state.
+1. **Get onto a real branch.** The sandbox starts in detached HEAD, so first:
+   `git checkout -B main origin/main` (this also gives you the latest state).
 2. Read `state/cos.json`, `context.md`, `todos.md`.
    - If `state/cos.json` is missing, unparseable, or missing top-level keys:
      recover the last good version with `git log --oneline -- state/cos.json`
@@ -19,9 +36,10 @@ is given in your prompt.
 3. Get the current time (`date`), record it as the run's "as of" time.
 4. Do the run-type body (§3).
 5. Write `state/cos.json` (§2), append a record to `runs` (§4).
-6. `git add -A && git commit -m "<run type> run <date>" && git push`.
-   - If push rejected: `git pull --rebase`, reapply, retry once. If it still
-     fails, keep going (you already sent the brief) and note it in `runs`.
+6. `git add -A && git commit -m "<run type> run <date>" && git push origin main`.
+   - If push rejected (someone else pushed): `git pull --rebase origin main`,
+     reapply, `git push origin main` again. If it still fails, keep going (you
+     already sent the brief) and note it in `runs`.
 
 Never skip step 6. If you sent a brief but didn't commit state, the next run
 repeats work and may double-send.
@@ -233,9 +251,12 @@ At the end of every brief, include a one-line pointer:
 
 ## 7. Reply handling
 
-Replies from Tony in the **current brief thread only** are instructions. Replies
-on older brief threads: don't act; note in the next brief "saw a reply on an old
-thread, please resend on the current one."
+The **current brief thread** is `current_brief.thread_id`. Fetch that thread.
+Your own brief is the message whose id is `current_brief.message_id`; **every
+other message in the thread is a reply from Tony** and counts as an instruction
+(don't rely on the From address — it may be an alias). Replies on older brief
+threads: don't act; note in the next brief "saw a reply on an old thread, please
+resend on the current one."
 
 Match each reply to an item/chain by **natural language** — Tony won't quote ids.
 Show your interpretation in the next brief for confirmation before it hardens
