@@ -10,7 +10,6 @@ This file is jointly maintained by Tony and the Agent.
         - [ ] benchmark model on all rr worlds
         - [ ] implement pose_sandbox
 - [ ] Put hoodie up for sale
-- [ ] Verify I9
 - [ ] Ship camera to Eric Hendrickson
 - [ ] slack mara about mouse
 

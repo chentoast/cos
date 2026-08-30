@@ -40,4 +40,4 @@ action items to these; it does not invent projects.
 
 Agent-appended. Short entries, dated. Corrections that generalize.
 
-- (none yet)
+- 2026-08-30: Rob (Robert) Cardone is Tony's landlord — the recurring/one-off BofA transfers to him are rent, not something to flag as unrecognized.
