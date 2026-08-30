@@ -28,16 +28,20 @@ Not live yet — until this line changes:
 1. **Get onto a real branch with current state.** The sandbox starts in detached
    HEAD and its `origin/main` ref may be slightly stale:
    `git fetch origin && git checkout -B main origin/main`.
-2. Read `state/cos.json`, `context.md`, `todos.md`.
+2. Read `state/cos.json`, `context.md`, `todos.md`, `reference/writing-style.md`.
    - If `state/cos.json` is missing, unparseable, or missing top-level keys:
      recover the last good version with `git log --oneline -- state/cos.json`
      then `git show <good-sha>:state/cos.json`. Note the recovery — the next
      brief must lead with "state was restored from <date>, these items may be
      stale or missing".
 3. Get the current time (`date`), record it as the run's "as of" time.
-4. **Process replies** to the current brief thread (§7) — both morning and
-   evening runs do this. Apply changes; queue your interpretation to echo in
-   this run's brief.
+4. **Process replies and do the work they ask for.** Fetch the current brief
+   thread (§7); every message that isn't your own brief is an instruction from
+   Tony. This is **identical for morning and evening** — Tony replies at any
+   hour, and whichever run fires next owns the follow-through: apply the change,
+   *and actually do the delegated work* (write the draft, run the research, make
+   the tiered-authority change), then report each in `## From your replies`.
+   Never leave a reply sitting for "the other run".
 5. Do the run-type body (§3).
 6. Write `state/cos.json` (§2), append a record to `runs` (§4).
 7. `git add -A && git commit -m "<run type> run <date>" && git push origin main`.
@@ -155,7 +159,9 @@ An excerpt is kept while its item/chain is open; drop it on close or when
 Purpose: the day ahead. **The prioritized action plan leads** — one ordered list
 of what to tackle, most important first. Everything else is supporting detail.
 
-(Replies were already processed in §0 step 4.)
+Replies + their delegated work were handled in §0 step 4 — the morning run is a
+full working run, not just triage. Anything Tony sent overnight (including
+replies to last night's PM brief) gets done here.
 
 1. Read Gmail since watermark. Triage: what's important (see §5), what needs a
    reply, what implies a new action item.
@@ -168,8 +174,8 @@ of what to tackle, most important first. Everything else is supporting detail.
 
 ### `evening`
 
-Purpose: reconcile + delta + accountability, in one.
-(Replies were already processed in §0 step 4.)
+Purpose: same working run as the morning, **plus** a delta + accountability pass.
+Replies + their delegated work were handled in §0 step 4.
 
 1. Read Gmail + calendar since the morning run.
 2. Update `action_items` (inferences, dedup) from what landed since morning.
@@ -216,7 +222,8 @@ notifications, threads Tony archives without reply.
 
 ## 6. Brief format
 
-Plain text / lightweight markdown (no HTML). Readable on a phone. Structure:
+Plain text / lightweight markdown (no HTML). Readable on a phone. Write it per
+`reference/writing-style.md` — plain, specific, no filler. Structure:
 
 ```
 Daily briefing — Fri Aug 29 (AM)
@@ -286,7 +293,9 @@ Always list, in the brief, every reply you processed and what you did with it.
 
 - append/edit `todos.md`
 - create/change a **solo** calendar event (never one with other attendees)
-- create a Gmail **draft**
+- create a Gmail **draft** — written per `reference/writing-style.md` and the
+  `context.md` style guide; only assert facts you can point to a source for
+  (a real email, a calendar entry) — flag anything you inferred so Tony checks it
 - research (web, Gmail history, calendar)
 
 Everything else — anything outward-facing or irreversible — needs explicit

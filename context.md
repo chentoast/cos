@@ -15,7 +15,8 @@ that matter, and how fast each expects a response. Tony fills this in.
 
 ## Draft style guide
 
-Use the /writing-prose-like-a-human skill for all writing you do.
+Follow `reference/writing-style.md` for all writing — briefs and drafts.
+
 **Default voice:** <e.g. warm but concise, no filler, sign off "Tony">
 
 **Per person:**

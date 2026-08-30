@@ -18,6 +18,8 @@ durable action-item / project tracking.
   [`context.md`](context.md).
 - **Todos**: [`todos.md`](todos.md) — Tony hand-edits; the agent appends and
   commits.
+- **Writing style** for briefs and drafts: [`reference/writing-style.md`](reference/writing-style.md)
+  (vendored from a skill; full version alongside it).
 - **Design rationale** (not needed at runtime): [`DESIGN.md`](DESIGN.md).
 
 ## Hard guardrails
