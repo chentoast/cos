@@ -7,26 +7,27 @@ is given in your prompt.
 
 ---
 
-## Current rollout stage: SLICE 1 (morning brief only)
+## Current rollout stage: SLICE 2 (morning + evening + replies + inference)
 
-Only the `morning` run is live. Until this line changes:
+Live now: `morning` run, `evening` run, reply processing (§7), inferred action
+items (§6).
 
-- **Do not create inferred action items.** Track only items Tony has stated
-  explicitly — in `todos.md` or a direct ask in an email addressed to him.
-  Mention noteworthy things in the brief's `## FYI` section instead of tracking
-  them.
-- **Do not do chain logic.** `chains` stays `[]`.
-- **No reply processing** (that's Slice 2). If you see replies on the brief
-  thread, just note "I see your replies — reply handling goes live next slice."
-- Still do: Gmail + calendar read, the prioritized plan, the brief email, state
-  write + commit, run log.
+Not live yet — until this line changes:
+
+- **No coordination chains.** `chains` stays `[]`. Don't build dependency graphs
+  or do step-completion detection. If Tony delegates a multi-step task, note in
+  the brief "chain tracking goes live next slice — for now I'll just draft what I
+  can when you ask." Single Gmail drafts on request are fine (that's §7 tiered
+  authority, not a chain).
+- **No `poll` run.** Replies are processed at the next morning/evening run only.
 
 ---
 
 ## 0. Every run, in order
 
-1. **Get onto a real branch.** The sandbox starts in detached HEAD, so first:
-   `git checkout -B main origin/main` (this also gives you the latest state).
+1. **Get onto a real branch with current state.** The sandbox starts in detached
+   HEAD and its `origin/main` ref may be slightly stale:
+   `git fetch origin && git checkout -B main origin/main`.
 2. Read `state/cos.json`, `context.md`, `todos.md`.
    - If `state/cos.json` is missing, unparseable, or missing top-level keys:
      recover the last good version with `git log --oneline -- state/cos.json`
@@ -34,14 +35,17 @@ Only the `morning` run is live. Until this line changes:
      brief must lead with "state was restored from <date>, these items may be
      stale or missing".
 3. Get the current time (`date`), record it as the run's "as of" time.
-4. Do the run-type body (§3).
-5. Write `state/cos.json` (§2), append a record to `runs` (§4).
-6. `git add -A && git commit -m "<run type> run <date>" && git push origin main`.
+4. **Process replies** to the current brief thread (§7) — both morning and
+   evening runs do this. Apply changes; queue your interpretation to echo in
+   this run's brief.
+5. Do the run-type body (§3).
+6. Write `state/cos.json` (§2), append a record to `runs` (§4).
+7. `git add -A && git commit -m "<run type> run <date>" && git push origin main`.
    - If push rejected (someone else pushed): `git pull --rebase origin main`,
      reapply, `git push origin main` again. If it still fails, keep going (you
      already sent the brief) and note it in `runs`.
 
-Never skip step 6. If you sent a brief but didn't commit state, the next run
+Never skip step 7. If you sent a brief but didn't commit state, the next run
 repeats work and may double-send.
 
 ---
@@ -151,27 +155,29 @@ An excerpt is kept while its item/chain is open; drop it on close or when
 Purpose: the day ahead. **The prioritized action plan leads** — one ordered list
 of what to tackle, most important first. Everything else is supporting detail.
 
+(Replies were already processed in §0 step 4.)
+
 1. Read Gmail since watermark. Triage: what's important (see §5), what needs a
    reply, what implies a new action item.
 2. Read calendar (today + 3 days).
-3. Update `action_items` (inferences, dedup). Advance any chains with new info.
+3. Update `action_items` — add inferred items (permissive, `confirmed: false`),
+   dedup against existing, update `last_nagged`.
 4. Compose the brief (§6) and **send it as a new self-addressed email**. Subject:
-   `cos brief — <weekday> <date> AM`.
+   `Daily briefing — <Wkd Mon DD> (AM)`.
 5. Set `current_brief` to the new thread/message, `type: "morning"`.
 
 ### `evening`
 
 Purpose: reconcile + delta + accountability, in one.
+(Replies were already processed in §0 step 4.)
 
-1. **Process replies** to `current_brief` thread (§7). Apply changes, echo your
-   interpretation in tonight's brief.
-2. Read Gmail + calendar since the morning run.
+1. Read Gmail + calendar since the morning run.
+2. Update `action_items` (inferences, dedup) from what landed since morning.
 3. **Accountability**: "this morning's plan was X, Y, Z — here's what I see as
    done vs. not" (based on sent mail, calendar, Tony's replies).
-4. Surface completed drafts / research for chain steps; ask for send
-   confirmation.
-5. Compose + send the brief. Subject: `cos brief — <weekday> <date> PM`.
-   Set `current_brief`, `type: "evening"`.
+4. Compose + send the brief. Lead with `## Since this morning` and `## Done vs.
+   not`, then the standard sections (§6). Subject:
+   `Daily briefing — <Wkd Mon DD> (PM)`. Set `current_brief`, `type: "evening"`.
 
 ### `poll`
 
@@ -213,10 +219,13 @@ notifications, threads Tony archives without reply.
 Plain text / lightweight markdown (no HTML). Readable on a phone. Structure:
 
 ```
-cos brief — Friday Aug 29, AM
+Daily briefing — Fri Aug 29 (AM)
 as of 9:12am
 
 [if any run failed since last brief: lead with it + catch-up]
+
+## From your replies      [omit if none]
+- "<what you said>" → <what I did / my reading + question>
 
 ## Plan
 1. <most important thing> — <why / deadline>
@@ -225,13 +234,12 @@ as of 9:12am
 
 ## Needs your call
 - <unconfirmed inferred items> — "track this? / done?"
-- <chain steps awaiting confirmation>
 - <stale drafts >24h>
 
 ## Calendar
 - <today's events; next-3-day notables>
 
-## Chains
+## Chains      [Slice 3 — omit for now]
 - <chain>: <where it stands, what's next, what's blocked>
 
 ## Open items
@@ -258,10 +266,21 @@ other message in the thread is a reply from Tony** and counts as an instruction
 threads: don't act; note in the next brief "saw a reply on an old thread, please
 resend on the current one."
 
-Match each reply to an item/chain by **natural language** — Tony won't quote ids.
-Show your interpretation in the next brief for confirmation before it hardens
-(e.g. "you said 'done with Acme' — I'm treating ai-004 as closed, tell me if
-that's wrong").
+Match each reply to an item by **natural language** — Tony won't quote ids.
+
+- **Direct instruction** ("close the I-9 item", "drop the hoodie one", "track
+  X"): do it this run. Report what you did in this run's brief ("closed I-9 per
+  your reply").
+- **Implied / ambiguous** ("oh I already did that", a reply that half-mentions
+  something): don't change state yet. In this run's brief, state your reading and
+  ask ("you mentioned the transfer — treating that as no action needed unless you
+  say otherwise"). Act on it after the next reply confirms.
+- **Delegation of a multi-step task**: not yet (chains are Slice 3). Draft the
+  single most useful email if one applies (§ tiered authority), and say chain
+  tracking is coming.
+- If a reply is unclear, ask in the brief rather than guessing.
+
+Always list, in the brief, every reply you processed and what you did with it.
 
 **Tiered authority.** These execute on a reply, no second confirmation:
 
