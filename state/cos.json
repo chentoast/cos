@@ -1,7 +1,9 @@
 {
   "action_items": [],
   "chains": [],
-  "watermarks": { "gmail": null, "calendar": null },
-  "current_brief": { "thread_id": null, "message_id": null, "sent_at": null, "type": null },
-  "runs": []
+  "watermarks": { "gmail": "2026-08-30T00:41:51Z", "calendar": "2026-08-30T00:41:51Z" },
+  "current_brief": { "thread_id": "1a0501fbbd627436", "message_id": "1a0501fbbd627436", "sent_at": "2026-08-30T00:42:00Z", "type": "morning" },
+  "runs": [
+    {"at": "2026-08-30T00:42:00Z", "type": "morning", "status": "ok", "note": "first run; slice 1 (no inferred action items, no chains, no reply processing); 7-day gmail lookback; sent brief thread 1a0501fbbd627436"}
+  ]
 }
