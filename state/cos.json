@@ -13,15 +13,17 @@
       "closed": null,
       "excerpts": [
         {"from": "gmail:1a0502e4baac626a", "text": "draft an email to both the NDSEG and also the advisor.", "stored_at": "2026-08-30"},
-        {"from": "gmail:1a03ea6d8fc83509", "text": "Please contact your NDSEG research advisor we need them to complete the Annual (not the same as Monthly) Certification on your NDSEG Annual Report. This is two months past due", "stored_at": "2026-08-30"}
-      ]
+        {"from": "gmail:1a03ea6d8fc83509", "text": "Please contact your NDSEG research advisor we need them to complete the Annual (not the same as Monthly) Certification on your NDSEG Annual Report. This is two months past due", "stored_at": "2026-08-30"},
+        {"from": "gmail:1a05807d935813c8", "text": "Hi Mary, Thanks for the follow-up, and sorry for the delay. I've reached out directly to my advisor and asked him to complete the Annual Fellow Certification as soon as possible.", "stored_at": "2026-08-31"}
+      ],
+      "note": "PMO/Mary draft is gone from Gmail Drafts and a matching message was sent from Tony's Sent mail on 8/31 9:35am ET — reads as done, proposed to Tony for confirmation in PM brief. Advisor (Josh) draft still unsent."
     },
     {
       "id": "ai-002",
       "title": "Pay Eversource bills",
-      "detail": "Two Eversource bills, $106.83 and $139.36, both due 9/20. Not yet confirmed as a to-do — flagging permissively.",
+      "detail": "Two Eversource bills, $106.83 and $139.36, both due 9/20. On autopay per Tony's 8/31 reply (\"Eversource bills are on autopay, no need to acknowledge\") — no manual action needed. Proposed closing in the PM brief; will close once Tony confirms or doesn't object.",
       "source": "inferred",
-      "confirmed": false,
+      "confirmed": true,
       "status": "open",
       "project": null,
       "created": "2026-08-30",
@@ -32,7 +34,7 @@
     {
       "id": "ai-003",
       "title": "Resolve Monday 8/31 calendar conflict",
-      "detail": "\"tuluhan\" 11:00am-12:00pm and \"derm\" 11:30am-12:30pm overlap by 30 min on Mon 8/31. Unresolved as of this morning, event starts ~11am ET.",
+      "detail": "\"tuluhan\" 11:00am-12:00pm and \"derm\" 11:30am-12:30pm overlapped by 30 min on Mon 8/31. Tony never gave an explicit call on which moved; a $25 Skin Center Boston charge at 11:39am suggests derm happened. The day has passed, so the item is moot — proposed closing in the PM brief.",
       "source": "inferred",
       "confirmed": false,
       "status": "open",
@@ -45,7 +47,7 @@
     {
       "id": "ai-004",
       "title": "Complete I-9 + Atlas steps for new RA appointment",
-      "detail": "New Research Assistant appointment (Brain & Cognitive Sciences, advisor Josh Tenenbaum, 100% effort, $19,658.65 total salary) starts 9/1/2026. MIT will not pay Tony until Section 1 of Form I-9 (hr.mit.edu/i-9) is complete, plus FERPA acknowledgment, funding confirmation, and IPIA via the MIT Atlas app. Flagged by two automated MIT emails on 8/31; not yet confirmed by Tony as something to track.",
+      "detail": "New Research Assistant appointment (Brain & Cognitive Sciences, advisor Josh Tenenbaum, 100% effort, $19,658.65 total salary) starts 9/1/2026. MIT will not pay Tony until Section 1 of Form I-9 (hr.mit.edu/i-9) is complete, plus FERPA acknowledgment, funding confirmation, and IPIA via the MIT Atlas app. Flagged by two automated MIT emails on 8/31, reinforced by a general MIT OGE reminder to all grad students on 8/31 (same requirement, no new info). Still not confirmed by Tony as something to track; still open as of the evening run with the start date tomorrow.",
       "source": "inferred",
       "confirmed": false,
       "status": "open",
@@ -60,14 +62,15 @@
     }
   ],
   "chains": [],
-  "watermarks": { "gmail": "2026-08-31T10:03:16Z", "calendar": "2026-08-31T11:17:13Z" },
+  "watermarks": { "gmail": "2026-08-31T21:11:37Z", "calendar": "2026-08-31T21:34:28Z" },
   "dinner_history": [
     {"date": "2026-08-31", "ideas": ["Bulgogi beef bowls", "Shakshuka with merguez", "Chicken katsu"]}
   ],
-  "current_brief": { "thread_id": "1a0578afec8f84e0", "message_id": "1a0578afec8f84e0", "sent_at": "2026-08-31T11:20:00Z", "type": "morning" },
+  "current_brief": { "thread_id": "1a0578afec8f84e0", "message_id": "1a059bf0b4ff55d8", "sent_at": "2026-08-31T21:34:00Z", "type": "evening" },
   "runs": [
     {"at": "2026-08-30T00:42:00Z", "type": "morning", "status": "ok", "note": "first run; slice 1 (no inferred action items, no chains, no reply processing); 7-day gmail lookback; sent brief thread 1a0501fbbd627436"},
     {"at": "2026-08-30T01:01:00Z", "type": "evening", "status": "ok", "note": "first run under slice 2 (rollout bumped after the morning run). Processed Tony's reply on the AM brief thread: drafted NDSEG + advisor emails (Gmail drafts, unsent), dropped I-9 from todos.md, added tennis court to calendar, recorded Rob Cardone = landlord in context.md Learned, dropped course-registration item. Seeded action_items (ai-001..003) for the first time under inference. Sent PM brief thread 1a050311c5c58506."},
-    {"at": "2026-08-31T11:17:00Z", "type": "morning", "status": "ok", "note": "No reply from Tony on the PM brief thread (1a050311c5c58506) — nothing to process under section 7. NDSEG drafts (ai-001) still unsent, confirmed via list_drafts. Eversource (ai-002) and Monday calendar conflict (ai-003) still open, unresolved. Added ai-004 (inferred, unconfirmed): new RA appointment starting 9/1 needs I-9 + Atlas steps before MIT will pay, flagged by two MIT system emails overnight. Sent AM brief thread 1a0578afec8f84e0 with dinner suggestions."}
+    {"at": "2026-08-31T11:17:00Z", "type": "morning", "status": "ok", "note": "No reply from Tony on the PM brief thread (1a050311c5c58506) — nothing to process under section 7. NDSEG drafts (ai-001) still unsent, confirmed via list_drafts. Eversource (ai-002) and Monday calendar conflict (ai-003) still open, unresolved. Added ai-004 (inferred, unconfirmed): new RA appointment starting 9/1 needs I-9 + Atlas steps before MIT will pay, flagged by two MIT system emails overnight. Sent AM brief thread 1a0578afec8f84e0 with dinner suggestions."},
+    {"at": "2026-08-31T21:34:00Z", "type": "evening", "status": "ok", "note": "Processed two replies on the AM brief thread: (1) Eversource confirmed on autopay — ai-002 marked confirmed, proposed for close next brief; (2) 'add the building 46 picnic to my calendar' — created solo calendar event Thu 9/10 2-5pm at 71 Rogers St, Cambridge (tiered auto-execute). Found via Sent mail that Tony personally emailed NDSEG PMO (Mary) directly this morning, likely by sending the drafted email himself — that draft is now gone from Drafts; advisor (Josh) draft still unsent. Noted a $25 Skin Center Boston charge as evidence derm happened; tuluhan/derm conflict (ai-003) never got an explicit call, proposed closing as moot since the day passed. Flagged an odd unsolicited 'Congratulations on Successfully Completing the NDSEG Fellowship' email (Agnes.Socrates@sysplus.com, image+PDF attachments) to Tony without opening attachments or acting on it. Sent PM brief thread, message 1a059bf0b4ff55d8."}
   ]
 }
