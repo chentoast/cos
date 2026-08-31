@@ -9,7 +9,7 @@
       "status": "open",
       "project": null,
       "created": "2026-08-30",
-      "last_nagged": "2026-08-30",
+      "last_nagged": "2026-08-31",
       "closed": null,
       "excerpts": [
         {"from": "gmail:1a0502e4baac626a", "text": "draft an email to both the NDSEG and also the advisor.", "stored_at": "2026-08-30"},
@@ -25,30 +25,49 @@
       "status": "open",
       "project": null,
       "created": "2026-08-30",
-      "last_nagged": "2026-08-30",
+      "last_nagged": "2026-08-31",
       "closed": null,
       "excerpts": []
     },
     {
       "id": "ai-003",
       "title": "Resolve Monday 8/31 calendar conflict",
-      "detail": "\"tuluhan\" 11:00am-12:00pm and \"derm\" 11:30am-12:30pm overlap by 30 min on Mon 8/31. Unresolved as of tonight.",
+      "detail": "\"tuluhan\" 11:00am-12:00pm and \"derm\" 11:30am-12:30pm overlap by 30 min on Mon 8/31. Unresolved as of this morning, event starts ~11am ET.",
       "source": "inferred",
       "confirmed": false,
       "status": "open",
       "project": null,
       "created": "2026-08-30",
-      "last_nagged": "2026-08-30",
+      "last_nagged": "2026-08-31",
       "closed": null,
       "excerpts": []
+    },
+    {
+      "id": "ai-004",
+      "title": "Complete I-9 + Atlas steps for new RA appointment",
+      "detail": "New Research Assistant appointment (Brain & Cognitive Sciences, advisor Josh Tenenbaum, 100% effort, $19,658.65 total salary) starts 9/1/2026. MIT will not pay Tony until Section 1 of Form I-9 (hr.mit.edu/i-9) is complete, plus FERPA acknowledgment, funding confirmation, and IPIA via the MIT Atlas app. Flagged by two automated MIT emails on 8/31; not yet confirmed by Tony as something to track.",
+      "source": "inferred",
+      "confirmed": false,
+      "status": "open",
+      "project": null,
+      "created": "2026-08-31",
+      "last_nagged": "2026-08-31",
+      "closed": null,
+      "excerpts": [
+        {"from": "gmail:1a056ab88b3f6a2b", "text": "Your appointment cannot be finalized until you complete step 1 and step 2 of the I-9 process... You are prohibited from working until you have completed the I-9 process.", "stored_at": "2026-08-31"},
+        {"from": "gmail:1a0569c28e3fb133", "text": "Students with RA, TA and IG appointments are prohibited from working and being paid until they have completed step 1 and step 2 of the I-9 process", "stored_at": "2026-08-31"}
+      ]
     }
   ],
   "chains": [],
-  "watermarks": { "gmail": "2026-08-30T01:00:56Z", "calendar": "2026-08-30T01:00:56Z" },
-  "dinner_history": [],
-  "current_brief": { "thread_id": "1a050311c5c58506", "message_id": "1a050311c5c58506", "sent_at": "2026-08-30T01:01:00Z", "type": "evening" },
+  "watermarks": { "gmail": "2026-08-31T10:03:16Z", "calendar": "2026-08-31T11:17:13Z" },
+  "dinner_history": [
+    {"date": "2026-08-31", "ideas": ["Bulgogi beef bowls", "Shakshuka with merguez", "Chicken katsu"]}
+  ],
+  "current_brief": { "thread_id": "1a0578afec8f84e0", "message_id": "1a0578afec8f84e0", "sent_at": "2026-08-31T11:20:00Z", "type": "morning" },
   "runs": [
     {"at": "2026-08-30T00:42:00Z", "type": "morning", "status": "ok", "note": "first run; slice 1 (no inferred action items, no chains, no reply processing); 7-day gmail lookback; sent brief thread 1a0501fbbd627436"},
-    {"at": "2026-08-30T01:01:00Z", "type": "evening", "status": "ok", "note": "first run under slice 2 (rollout bumped after the morning run). Processed Tony's reply on the AM brief thread: drafted NDSEG + advisor emails (Gmail drafts, unsent), dropped I-9 from todos.md, added tennis court to calendar, recorded Rob Cardone = landlord in context.md Learned, dropped course-registration item. Seeded action_items (ai-001..003) for the first time under inference. Sent PM brief thread 1a050311c5c58506."}
+    {"at": "2026-08-30T01:01:00Z", "type": "evening", "status": "ok", "note": "first run under slice 2 (rollout bumped after the morning run). Processed Tony's reply on the AM brief thread: drafted NDSEG + advisor emails (Gmail drafts, unsent), dropped I-9 from todos.md, added tennis court to calendar, recorded Rob Cardone = landlord in context.md Learned, dropped course-registration item. Seeded action_items (ai-001..003) for the first time under inference. Sent PM brief thread 1a050311c5c58506."},
+    {"at": "2026-08-31T11:17:00Z", "type": "morning", "status": "ok", "note": "No reply from Tony on the PM brief thread (1a050311c5c58506) — nothing to process under section 7. NDSEG drafts (ai-001) still unsent, confirmed via list_drafts. Eversource (ai-002) and Monday calendar conflict (ai-003) still open, unresolved. Added ai-004 (inferred, unconfirmed): new RA appointment starting 9/1 needs I-9 + Atlas steps before MIT will pay, flagged by two MIT system emails overnight. Sent AM brief thread 1a0578afec8f84e0 with dinner suggestions."}
   ]
 }
