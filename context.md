@@ -61,3 +61,4 @@ Agent-appended. Short entries, dated. Corrections that generalize.
 
 - 2026-08-30: Rob (Robert) Cardone is Tony's landlord — the recurring/one-off BofA transfers to him are rent, not something to flag as unrecognized.
 - 2026-08-31: Eversource bills are on autopay — don't flag them as needing action, no need to acknowledge new ones.
+- 2026-09-01: Cost-sharing tracking (Tony's request): whenever an Eversource bill or a Citi Custom Cash statement email arrives, notify Tony with the total amount so he can enter it in Splitwise. This is separate from the autopay note above — autopay means no payment action needed, but the amount still needs surfacing for Splitwise. Note: Citi's "statement is now available" emails don't include a dollar total or itemized grocery spend — only a login link — so that side of this can't be automated from Gmail alone; flag that limitation each time rather than guessing a number.
