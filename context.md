@@ -60,3 +60,4 @@ maintains this.
 Agent-appended. Short entries, dated. Corrections that generalize.
 
 - 2026-08-30: Rob (Robert) Cardone is Tony's landlord — the recurring/one-off BofA transfers to him are rent, not something to flag as unrecognized.
+- 2026-08-31: Eversource bills are on autopay — don't flag them as needing action, no need to acknowledge new ones.
